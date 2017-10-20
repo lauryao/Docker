@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    mytomcat:
+        build: .\mytomcat
+        ports:
+        - 9090:8080
+        depends_on:
+        - database
+    database:
+        build: .\postgresql
+        ports:
+        - 5432:5432
+        volumes:
+        - dbdata:/var/lib/postgresql/data
+volumes:
+    dbdata:
